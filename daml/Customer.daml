@@ -1,0 +1,12 @@
+module Customer where
+
+template Customer
+  with
+    name : Text
+    age : Integer
+    totalPoints: Integer
+    ticketsEarned: Integer
+  where
+    signatory employee, customer
+    observer owner
+    

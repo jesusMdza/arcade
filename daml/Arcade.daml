@@ -1,0 +1,17 @@
+module Arcade where
+
+template ArcadeBuilding
+  with
+    owner : Party
+    location : Text
+  where
+    signatory owner
+    observer employee, customer
+
+template GameOffer
+  with
+    name : Text
+    pointPrice : Int
+    ticketsDispensed : Int 
+  where
+    signatory customer

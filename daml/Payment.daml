@@ -1,0 +1,21 @@
+module Payment where
+
+import Arcade
+
+template NewPointsTransaction
+  with
+    employee : Party
+    customer : Party
+    pointsTransferred : Int
+    price : Int
+  where
+    signatory employee, customer
+    observer owner
+    
+template GameOfferTransaction
+  with
+    customer : Party
+    gameOffer : GameOffer 
+    date : Date
+  where
+    signatory customer

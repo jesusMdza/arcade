@@ -1,0 +1,9 @@
+module Staff where
+
+template Employee
+  with
+    name : Text 
+    age : Int
+    occupation : Text
+  where
+    signatory owner
