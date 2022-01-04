@@ -1,12 +1,18 @@
 module Customer where
 
+import Staff
+import Payment
+
 template Customer
   with
     name : Text
     age : Integer
-    totalPoints: Integer
-    ticketsEarned: Integer
+    totalPoints : Integer
   where
     signatory employee, customer
     observer owner
-    
+
+    controller customer can 
+      MakeGameOffer : ContractId GameOffer
+        do
+          create GameOffer with ..

@@ -1,17 +1,48 @@
 module Arcade where
 
+import Staff
+
 template ArcadeBuilding
   with
+    name : Text
     owner : Party
-    location : Text
+    staff : [Employee]
+    games : [Game]
   where
     signatory owner
     observer employee, customer
 
-template GameOffer
+    controller owner can
+      CreateArcadeBuilding : ContactId ArcadeBuilding
+        with
+          newName : Text
+          newOwner : Party
+          newStaff : [Employee]
+          newGames : [Game]
+        do
+          create this with
+            name = newName
+            owner = newOwner
+            staff = newStaff
+            games = newGames
+
+template Game
   with
     name : Text
     pointPrice : Int
-    ticketsDispensed : Int 
   where
-    signatory customer
+    signatory owner
+
+    controller game can
+      AcceptGameOffer : 
+
+      DeclineGameOffer : ()
+        do return ()
+    
+    controller owner can
+      ChangePointPrice : ContractId Game
+        with
+          newPointPrice : Int
+        do
+          create this with
+            pointPrice = newPointPrice

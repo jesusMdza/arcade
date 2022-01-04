@@ -1,9 +1,20 @@
 module Staff where
 
-template Employee
+template Owner 
   with
-    name : Text 
-    age : Int
-    occupation : Text
+    owner: Party
   where
     signatory owner
+
+template Employee
+  with
+    employee : Party
+  where
+    signatory owner, employee
+
+    controller employee can
+      AcceptPointsTransaction : 
+
+      DeclinePointsTransaction : ()
+        do 
+          return ()

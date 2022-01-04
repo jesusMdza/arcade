@@ -12,10 +12,12 @@ template NewPointsTransaction
     signatory employee, customer
     observer owner
     
-template GameOfferTransaction
+template PlayGameTransaction
   with
     customer : Party
-    gameOffer : GameOffer 
+    gameOffer : GameOffer
+    pointsTransferred : Int 
     date : Date
   where
     signatory customer
+    observer owner
